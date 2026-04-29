@@ -28,6 +28,7 @@ public class PeliculaDAO {
                 ,rs.getString("descripcion"), rs.getDouble("recaudacion"), rs.getString("estudiante"), rs.getInt("stock"));
                 
                 lista.add(p);
+                rs.close();
                 ps.close();
                 conn.close();
                 
@@ -43,10 +44,9 @@ public class PeliculaDAO {
     }
     
     public boolean guardar(Pelicula p){
-        String sql = "INSERT INTO pelicula(titulo,director, lanzamiento, duracion, genero, idioma, descripcion, recaudacion,estudiante, stock) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO pelicula(titulo,director, lanzamiento, duracion, genero, idioma, descripcion, recaudacion,estudiante, stock) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = connFactory.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();){
+            PreparedStatement ps = conn.prepareStatement(sql);){
             ps.setString(1, p.getTitulo());
             ps.setString(2, p.getDirector());
             ps.setInt(3, p.getLanzamiento());
