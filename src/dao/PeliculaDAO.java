@@ -43,7 +43,7 @@ public class PeliculaDAO {
     }
     
     public boolean guardar(Pelicula p){
-        String sql = "INSERT INTO pelicula(titulo,director, lanzamiento, duracion, genero, idioma, descripcion, idioma,estudiante, stock) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO pelicula(titulo,director, lanzamiento, duracion, genero, idioma, descripcion, recaudacion,estudiante, stock) values(?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = connFactory.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();){
